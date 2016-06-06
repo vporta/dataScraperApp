@@ -1,0 +1,11 @@
+/** {
+  box-sizing: border-box;
+}*/
+#display-article {
+  height: 500px;
+  width: 500px;
+  background: cornflowerblue;
+}
+/*#userinput {
+  background-color: blue;
+}*/

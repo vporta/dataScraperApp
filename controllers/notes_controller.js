@@ -1,6 +1,7 @@
 var express = require('express');
 var bcrypt = require('bcryptjs');
-// var Note = require('../models.Note.js');
+var Note = require('../models/Note.js');
+var Title = require('../models/Title.js');
 var User = require('../models/User.js');
 var session = require('express-session');
 var cheerio = require('cheerio');
@@ -11,29 +12,26 @@ var router = express.Router();
 
 
 
-// router.get('/scrape', function(req, res) {
-//   request('https://news.ycombinator.com/show', function(error, response, html) {
-//     //fill in the code here
-//       //code here
-//     //fill in the code here
+// router.get('/', function(req, res) {
+//   request('https://www.kickstarter.com/discover/categories/art?ref=discover_index', function(error, response, html) {
 //     var $ = cheerio.load(html);
 //     var result = [];
-//     $('p.title').each(function(i, element){
+//     $('.featured-project__title.ratio-16-9').each(function(i, element){
 
-//         var title = $(this).text();
-//         var link = $(element).children().attr('href');
+//     var featuredProject = $(this).children('a').text();
+//     var link = $(element).children('a').attr('href');
 
-//         db.result.insert({
-//           title:title,
-//           link:link
-//         });
+//       db.result.insert({
+//         title:title,
+//         link:link
 //       });
+//     });
 //     console.log(result);
 //   });
-//   res.send("Scrape Complete");
+//   // res.send("Scrape Complete");
 // });
 
-module.exports = router;
+// module.exports = router;
 
 
 // var express = require('express');
