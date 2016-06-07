@@ -2,16 +2,17 @@ var mongoose = require('mongoose');
 var mongojs = require('mongojs');
 var db = require('../config/db');
 
+var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-// create a schema
-var notesSchema = new Schema({
-  name: String,
+var NoteSchema = new Schema({
+  title: {
+    type:String
+  },
+  body: {
+    type:String
+  }
 });
 
-// the schema is useless so far
-// we need to create a model using it
-var Note = mongoose.model('Note', notesSchema);
-
-// make this available to our users in our Node applications
+var Note = mongoose.model('Note', NoteSchema);
 module.exports = Note;

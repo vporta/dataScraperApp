@@ -6,72 +6,36 @@ var User = require('../models/User.js');
 var session = require('express-session');
 var cheerio = require('cheerio');
 var db = require('../config/db');
+var request = require('request');
+var mongojs = require('mongojs');
+var mongoose = require('mongoose');
 var router = express.Router();
 
 
 
+//Save to DB
+app.post('/submit', function(req, res) {
+  console.log(req.body.notename);
+  var noteSave = req.body.notename;
+    if (err) {
+      console.log(err);
+    } else {
 
+      var newNote = Note ({
+        notename: noteSave
+      });
+      // save the new title
+      newNote.save(function(err) {
+        if (err) throw err;
+        console.log('Note created!');
+      });
 
-// router.get('/', function(req, res) {
-//   request('https://www.kickstarter.com/discover/categories/art?ref=discover_index', function(error, response, html) {
-//     var $ = cheerio.load(html);
-//     var result = [];
-//     $('.featured-project__title.ratio-16-9').each(function(i, element){
+      res.send(saved);
+    }
+  
+});
 
-//     var featuredProject = $(this).children('a').text();
-//     var link = $(element).children('a').attr('href');
-
-//       db.result.insert({
-//         title:title,
-//         link:link
-//       });
-//     });
-//     console.log(result);
-//   });
-//   // res.send("Scrape Complete");
-// });
-
-// module.exports = router;
-
-
-// var express = require('express');
-// var app = express();
-// var bodyParser = require('body-parser');
-// var logger = require('morgan');
-
-// app.use(logger('dev'));
-// app.use(bodyParser.urlencoded({
-//     extended: false
-// }));
-// app.use(express.static('public'));
-
-// //Database configuration
-// var mongojs = require('mongojs');
-// var databaseUrl = "week18day2";
-// var collections = ["notes"];
-// var db = mongojs(databaseUrl, collections);
-// db.on('error', function(err) {
-//   console.log('Database Error:', err);
-// });
-
-
-
-// // Routes
-// app.get('/', function(req, res) {
-//   res.send(index.html);
-// });
-
-// //Save to DB
-// app.post('/submit', function(req, res) {
-//   console.log(req.body);
-//   db.notes.save(req.body, function(err, saved) {
-//     if (err) {
-//       console.log(err);
-//     } else {
-//       res.send(saved);
-//     }
-//   });
-// });
+module.exports = router;
 
 // //Get from DB
 // app.get('/all', function(req, res) {

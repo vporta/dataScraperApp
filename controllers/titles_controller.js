@@ -9,47 +9,76 @@ var db = require('../config/db');
 var request = require('request');
 var mongojs = require('mongojs');
 var mongoose = require('mongoose');
-
 var router = express.Router();
 
+// router.get('/', function(req, res) {
+//   res.render('index', {});
+// });
 
-router.get('/all', function(req, res) {
-// res.send('hello world');
-  Title.find({}, function(err, found) {
-    if (err) {
-      console.log(err);
-    } else {
-      res.json(found);
-    }
-  })
+router.get('/', function(req, res) {
+    var data = {};
+    Title.find({}).then(function(result) {
+        data.Title = result;
+    });
+    res.render('index', data);
 });
-
-
 
 router.get('/scrape', function(req, res) {
-  request('https://www.kickstarter.com/discover/categories/art?ref=discover_index', function(error, response, html) {
+var url = 'https://www.kickstarter.com/discover/categories/music?ref=discover_index';
+    request(url, function(error, response, html) {
     var $ = cheerio.load(html);
-    var result = [];
-
     $('.featured-project__title.ratio-16-9').each(function(i, element){
-
-    var titlename = $(this).children('a').text();
-    var link = $(element).children('a').attr('href');
-    
-    var newTitle = Title ({
-      titlename: titlename,
-      link: link
+    var result = {};
+        result.title = $(this).children('a').text();
+        result.link = $(element).attr('href');
+        var newTitle = new Title (result);
+        newTitle.save(function(err) {
+            if (err) throw err;
+            console.log('Title created!');
+      });     
     });
-    // save the new title
-    newTitle.save(function(err) {
-      if (err) throw err;
-      console.log('Title created!');
-    });
-            
-    });
-    console.log(result);
   });
-  // res.send("Scrape Complete");
 });
+
+router.get('/titles', function(req, res){
+  Title.find({}, function(err, doc){
+    if (err){
+      console.log(err);
+    } else {
+      res.json(doc);
+    }
+  });
+});
+
+router.get('/titles/:id', function(req, res){
+  Title.findOne({'_id': req.params.id})
+  .populate('note')
+  .exec(function(err, doc){
+    if (err){
+      console.log(err);
+    } else {
+      res.json(doc);
+    }
+  });
+});
+
+router.post('/titles/:id', function(req, res){
+  var newNote = new Note(req.body);
+  newNote.save(function(err, doc){
+    if(err){
+      console.log(err);
+    } else {
+      Title.findOneAndUpdate({'_id': req.params.id}, {'note':doc._id})
+      .exec(function(err, doc){
+        if (err){
+          console.log(err);
+        } else {
+          res.send(doc);
+        }
+      });
+    }
+  });
+});
+
 
 module.exports = router;

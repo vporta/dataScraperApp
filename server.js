@@ -37,9 +37,7 @@ var titles_controllers = require('./controllers/titles_controller.js');
 // app.use('/', users_controllers);
 app.use('/', titles_controllers);
 
-app.get('/', function(req, res) {
-  res.render('index');
-});
+
 //Database configuration
 // var mongojs = require('mongojs');
 // var databaseUrl = "";
