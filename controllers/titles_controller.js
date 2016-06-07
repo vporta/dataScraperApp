@@ -11,16 +11,8 @@ var mongojs = require('mongojs');
 var mongoose = require('mongoose');
 var router = express.Router();
 
-// router.get('/', function(req, res) {
-//   res.render('index', {});
-// });
-
 router.get('/', function(req, res) {
-    var data = {};
-    Title.find({}).then(function(result) {
-        data.Title = result;
-    });
-    res.render('index', data);
+    res.send(index.html);
 });
 
 router.get('/scrape', function(req, res) {
@@ -30,7 +22,7 @@ var url = 'https://www.kickstarter.com/discover/categories/music?ref=discover_in
     $('.featured-project__title.ratio-16-9').each(function(i, element){
     var result = {};
         result.title = $(this).children('a').text();
-        result.link = $(element).attr('href');
+        result.link = $(this).children('a').attr('href');
         var newTitle = new Title (result);
         newTitle.save(function(err) {
             if (err) throw err;
@@ -38,6 +30,7 @@ var url = 'https://www.kickstarter.com/discover/categories/music?ref=discover_in
       });     
     });
   });
+    res.redirect('/');
 });
 
 router.get('/titles', function(req, res){
@@ -71,9 +64,9 @@ router.post('/titles/:id', function(req, res){
       Title.findOneAndUpdate({'_id': req.params.id}, {'note':doc._id})
       .exec(function(err, doc){
         if (err){
-          console.log(err);
+        console.log(err);
         } else {
-          res.send(doc);
+        res.send(doc);
         }
       });
     }

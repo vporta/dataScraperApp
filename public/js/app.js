@@ -1,6 +1,6 @@
 $.getJSON('/titles', function(data) {
   for (var i = 0; i<data.length; i++){
-    $('#titles').append('<p data-id="' + data[i]._id + '">'+ data[i].title + '<br />'+ data[i].link + '</p>');
+    $('#titles').append('<p data-id="' + data[i]._id + '">'+ data[i].title + '<br />'+ 'https://www.kickstarter.com' + data[i].link + '</p>');
   }
 });
 
@@ -15,8 +15,10 @@ $(document).on('click', 'p', function(){
     .done(function( data ) {
       console.log(data);
       $('#notes').append('<h2>' + data.title + '</h2>');
-      $('#notes').append('<input id="titleinput" name="title" >');
-      $('#notes').append('<textarea id="bodyinput" name="body"></textarea>');
+    // <input type="text" class="form-control" placeholder="Text input">
+
+      $('#notes').append('<input type="text" class="form-control" placeholder="Text input" id="titleinput" name="title" >');
+      $('#notes').append('<textarea type="text" id="bodyinput" class="form-control" rows="3" name="body"></textarea>');
       $('#notes').append('<button data-id="' + data._id + '" id="savenote">Save Note</button>');
 
       if(data.note){

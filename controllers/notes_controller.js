@@ -1,41 +1,41 @@
-var express = require('express');
-var bcrypt = require('bcryptjs');
-var Note = require('../models/Note.js');
-var Title = require('../models/Title.js');
-var User = require('../models/User.js');
-var session = require('express-session');
-var cheerio = require('cheerio');
-var db = require('../config/db');
-var request = require('request');
-var mongojs = require('mongojs');
-var mongoose = require('mongoose');
-var router = express.Router();
+// var express = require('express');
+// var bcrypt = require('bcryptjs');
+// var Note = require('../models/Note.js');
+// var Title = require('../models/Title.js');
+// var User = require('../models/User.js');
+// var session = require('express-session');
+// var cheerio = require('cheerio');
+// var db = require('../config/db');
+// var request = require('request');
+// var mongojs = require('mongojs');
+// var mongoose = require('mongoose');
+// var router = express.Router();
 
 
 
-//Save to DB
-app.post('/submit', function(req, res) {
-  console.log(req.body.notename);
-  var noteSave = req.body.notename;
-    if (err) {
-      console.log(err);
-    } else {
+// //Save to DB
+// app.post('/submit', function(req, res) {
+//   console.log(req.body.title);
+//   var noteSave = req.body;
+//     if (err) {
+//       console.log(err);
+//     } else {
 
-      var newNote = Note ({
-        notename: noteSave
-      });
-      // save the new title
-      newNote.save(function(err) {
-        if (err) throw err;
-        console.log('Note created!');
-      });
+//       var newNote = Note ({
+//         notename: noteSave
+//       });
+//       // save the new title
+//       newNote.save(function(err) {
+//         if (err) throw err;
+//         console.log('Note created!');
+//       });
 
-      res.send(saved);
-    }
+//       res.send(saved);
+//     }
   
-});
+// });
 
-module.exports = router;
+// module.exports = router;
 
 // //Get from DB
 // app.get('/all', function(req, res) {
