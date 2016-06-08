@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Document</title>
+  
  <link rel="stylesheet" type="text/css" href="../css/style.css">
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
@@ -10,12 +11,34 @@
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
 
  <!-- Latest compiled and minified JavaScript -->
+ <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+ <script>
+ $(document).ready(function(){
+     $('[data-toggle="popover"]').popover(); 
+ });
+ </script>
+
 </head>
 <body>
 <div class="container-fluid">
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">Kickstarter Web Scraper</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Scrape</a></li> 
+        <li><a href="#">Contact</a></li> 
+      </ul>
+    </div>
+  </nav>
+
   <div class="jumbotron">
     <h1 class=".text-center">KICKSTARTER SCRAPER</h1>
+    <p style="text-align: center;">Kickstarter Scraper is a company specializing in data extraction from Kickstarter web pages.</p>
   </div>
   <div class="row">
     <div class="col-md-4">
@@ -26,6 +49,7 @@
         <p class="lead">
           You can also save notes for each scraped project by clicking on the text. Your note will be automatically saved to refer back to anytime.  
         </p>
+
     </div>
     <div class="col-md-4">
       <h2>Directions</h2>
@@ -35,8 +59,10 @@
             <li>Hover over and click on the scraped text</li>
             <li>Type in the input box</li>
             <li>Click submit to save your note</li>
+            
           </ol>
         </p>
+
     </div>
     <div class="col-md-4">
       <h2>Classic Note Saving</h2>
@@ -48,6 +74,23 @@
         </p>
     </div>
   </div>
+  <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+    Popover on left
+  </button>
+
+  <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+    Popover on top
+  </button>
+
+  <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus
+  sagittis lacus vel augue laoreet rutrum faucibus.">
+    Popover on bottom
+  </button>
+
+  <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+    Popover on right
+  </button>
+
   <div class="row">
     <div class="col-md-7">
       <h2>Featured Project: Music</h2>
@@ -57,6 +100,10 @@
       <div id="notes"></div>
     </div>
   </div>
+</div>
+<div class="panel panel-default">
+  <div class="panel-body"></div>
+  <div class="panel-footer"></div>
 </div>
 
   <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>

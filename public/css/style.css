@@ -3,7 +3,7 @@
 }
 body{
 /*background-color: #DECADE*/
-background-color: #F2F6D0
+background-color: #ffffff
 }
 #wrapper{
   width:960px;
@@ -48,20 +48,31 @@ h1 {
   margin-bottom: 25px;
 }
 .container-fluid {
-  background-color: #84ddaf;
+  background-color: #ffffff;
   margin-bottom: 35px;
 }
 .row {
   background-color: #ebf2ef;
 }
 .col-md-7 {
-  background-color: #84ddaf;
+  background-color: #ebf2ef;
+  margin-top: 20px;
+  border-style: solid;
+  border-width: 20px;
+  border-color: #ffffff;
 }
 .col-md-5 {
   background-color: #ebf2ef;
+
 }
 li {
   font-size: 21px;
   font-weight: 300;
   line-height: 1.4;
+}
+.panel-body {
+  height: 30px;
+}
+.panel-footer {
+  height: 300px;
 }
