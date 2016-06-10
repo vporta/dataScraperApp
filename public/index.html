@@ -13,11 +13,7 @@
  <!-- Latest compiled and minified JavaScript -->
  <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
- <script>
- $(document).ready(function(){
-     $('[data-toggle="popover"]').popover(); 
- });
- </script>
+ 
 
 </head>
 <body>
@@ -38,7 +34,7 @@
 
   <div class="jumbotron">
     <h1 class=".text-center">KICKSTARTER SCRAPER</h1>
-    <p style="text-align: center;">Kickstarter Scraper is a company specializing in data extraction from Kickstarter web pages.</p>
+    <p style="text-align: center;">Kickstarter Scraper is a website specializing in data extraction from Kickstarter web pages.</p>
   </div>
   <div class="row">
     <div class="col-md-4">
@@ -47,7 +43,7 @@
           This app allows you to scrape the Kickstarter page's featured project for the music category. 
         </p>
         <p class="lead">
-          You can also save notes for each scraped project by clicking on the text. Your note will be automatically saved to refer back to anytime.  
+          You can also save notes for each scraped project by clicking on the text. Your note will be automatically saved.  
         </p>
 
     </div>
@@ -74,33 +70,83 @@
         </p>
     </div>
   </div>
-  <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
-    Popover on left
-  </button>
-
-  <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
-    Popover on top
-  </button>
-
-  <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus
-  sagittis lacus vel augue laoreet rutrum faucibus.">
-    Popover on bottom
-  </button>
-
-  <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
-    Popover on right
-  </button>
-
+  
   <div class="row">
     <div class="col-md-7">
-      <h2>Featured Project: Music</h2>
-      <div id="titles"></div> 
+      <h2>Featured Projects</h2>
+      <!-- <div id="titles"></div>  -->
+      <table id="personDataTable">
+          <tr>
+              
+          </tr>
+          
+      </table>
     </div>
     <div class="col-md-5">
       <div id="notes"></div>
     </div>
   </div>
 </div>
+<br>
+<h2>Contact</h2>
+<form id="contact-form" method="post" action="mailto:vporta7@gmail.com" role="form">
+
+    <div class="messages"></div>
+
+    <div class="controls">
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="form_name">Firstname *</label>
+                    <input id="form_name" type="text" name="name" class="form-control" placeholder="Please enter your firstname *" required="required" data-error="Firstname is required.">
+                    <div class="help-block with-errors"></div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="form_lastname">Lastname *</label>
+                    <input id="form_lastname" type="text" name="surname" class="form-control" placeholder="Please enter your lastname *" required="required" data-error="Lastname is required.">
+                    <div class="help-block with-errors"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="form_email">Email *</label>
+                    <input id="form_email" type="email" name="email" class="form-control" placeholder="Please enter your email *" required="required" data-error="Valid email is required.">
+                    <div class="help-block with-errors"></div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="form_phone">Phone</label>
+                    <input id="form_phone" type="tel" name="phone" class="form-control" placeholder="Please enter your phone">
+                    <div class="help-block with-errors"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="form_message">Message *</label>
+                    <textarea id="form_message" name="message" class="form-control" placeholder="Message for me *" rows="4" required="required" data-error="Please,leave us a message."></textarea>
+                    <div class="help-block with-errors"></div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <input type="submit" class="btn btn-success btn-send" value="Send message">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <p class="text-muted"><strong></strong></p>
+            </div>
+        </div>
+    </div>
+
+</form>
 <div class="panel panel-default">
   <div class="panel-body"></div>
   <div class="panel-footer"></div>

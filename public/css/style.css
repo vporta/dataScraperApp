@@ -76,3 +76,21 @@ li {
 .panel-footer {
   height: 300px;
 }
+table {
+  width: 100%;
+}
+th {
+  background: #f8f8f8; 
+  font-weight: bold;    
+  padding: 2px;
+}
+td:hover {
+  cursor: pointer;
+}
+.navbar {
+  position: fixed;
+}
+#contact-form {
+  width: 780px;
+  
+}

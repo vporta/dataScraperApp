@@ -30,10 +30,10 @@ app.use(methodOverride('_method'))
 // }));
 // app.set('view engine', 'handlebars');
 
-// var users_controllers = require('./controllers/users_controller.js');
+var notes_controllers = require('./controllers/notes_controller.js');
 var titles_controllers = require('./controllers/titles_controller.js');
 
-// app.use('/', users_controllers);
+app.use('/', notes_controllers);
 app.use('/', titles_controllers);
 
 

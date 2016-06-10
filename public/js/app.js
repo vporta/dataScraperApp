@@ -1,6 +1,6 @@
 $.getJSON('/titles', function(data) {
   for (var i = 0; i<data.length; i++){
-    $('#titles').append('<p data-id="' + data[i]._id + '">'+ data[i].title + '<br />'+ 'https://www.kickstarter.com' + data[i].link + '</p>');
+    $('#personDataTable').append('<p data-id="' + data[i]._id + '">'+ data[i].title + '<br />'+ 'https://www.kickstarter.com' + data[i].link + '</p>');
   }
 });
 
@@ -52,11 +52,13 @@ $(document).on('click', '#savenote', function(){
 $(document).on('click', '#deleter', function(){
   var selected = $(this).attr('data-id');
   $.ajax({
-    type: "POST",
+    type: "DELETE",
     url: '/delete/' + selected,
     success: function(response){
       console.log(response);
       selected.remove();
     }
   });
+  $('#titleinput').val("");
+  $('#bodyinput').val("");
 });

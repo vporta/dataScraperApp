@@ -53,7 +53,7 @@ var url = 'https://www.kickstarter.com/discover/categories/art?ref=discover_inde
 
 
 router.get('/scrape-crafts', function(req, res) {
-var url = 'https://www.kickstarter.com/discover/categories/art?ref=discover_index';
+var url = 'https://www.kickstarter.com/discover/categories/crafts?ref=discover_index';
     request(url, function(error, response, html) {
     var $ = cheerio.load(html);
     $('.featured-project__title.ratio-16-9').each(function(i, element){
@@ -71,8 +71,8 @@ var url = 'https://www.kickstarter.com/discover/categories/art?ref=discover_inde
 });
 
 
-router.get('/scrape-art', function(req, res) {
-var url = 'https://www.kickstarter.com/discover/categories/art?ref=discover_index';
+router.get('/scrape-food', function(req, res) {
+var url = 'https://www.kickstarter.com/discover/categories/food?ref=discover_index';
     request(url, function(error, response, html) {
     var $ = cheerio.load(html);
     $('.featured-project__title.ratio-16-9').each(function(i, element){
@@ -91,7 +91,7 @@ var url = 'https://www.kickstarter.com/discover/categories/art?ref=discover_inde
 
 
 router.get('/scrape-dance', function(req, res) {
-var url = 'https://www.kickstarter.com/discover/categories/art?ref=discover_index';
+var url = 'https://www.kickstarter.com/discover/categories/dance?ref=discover_index';
     request(url, function(error, response, html) {
     var $ = cheerio.load(html);
     $('.featured-project__title.ratio-16-9').each(function(i, element){
@@ -110,7 +110,7 @@ var url = 'https://www.kickstarter.com/discover/categories/art?ref=discover_inde
 
 
 router.get('/scrape-design', function(req, res) {
-var url = 'https://www.kickstarter.com/discover/categories/art?ref=discover_index';
+var url = 'https://www.kickstarter.com/discover/categories/design?ref=discover_index';
     request(url, function(error, response, html) {
     var $ = cheerio.load(html);
     $('.featured-project__title.ratio-16-9').each(function(i, element){
@@ -128,7 +128,7 @@ var url = 'https://www.kickstarter.com/discover/categories/art?ref=discover_inde
 });
 
 router.get('/scrape-fashion', function(req, res) {
-var url = 'https://www.kickstarter.com/discover/categories/art?ref=discover_index';
+var url = 'https://www.kickstarter.com/discover/categories/fashion?ref=discover_index';
     request(url, function(error, response, html) {
     var $ = cheerio.load(html);
     $('.featured-project__title.ratio-16-9').each(function(i, element){
@@ -147,7 +147,7 @@ var url = 'https://www.kickstarter.com/discover/categories/art?ref=discover_inde
 
 
 router.get('/scrape-film%20&%20video', function(req, res) {
-var url = 'https://www.kickstarter.com/discover/categories/art?ref=discover_index';
+var url = 'https://www.kickstarter.com/discover/categories/film%20&%20video?ref=discover_index';
     request(url, function(error, response, html) {
     var $ = cheerio.load(html);
     $('.featured-project__title.ratio-16-9').each(function(i, element){
@@ -164,26 +164,9 @@ var url = 'https://www.kickstarter.com/discover/categories/art?ref=discover_inde
     res.redirect('/');
 });
 
-router.get('/scrape-food', function(req, res) {
-var url = 'https://www.kickstarter.com/discover/categories/art?ref=discover_index';
-    request(url, function(error, response, html) {
-    var $ = cheerio.load(html);
-    $('.featured-project__title.ratio-16-9').each(function(i, element){
-    var result = {};
-        result.title = $(this).children('a').text();
-        result.link = $(this).children('a').attr('href');
-        var newTitle = new Title (result);
-        newTitle.save(function(err) {
-            if (err) throw err;
-            console.log('Title created!');
-      });     
-    });
-  });
-    res.redirect('/');
-});
 
 router.get('/scrape-games', function(req, res) {
-var url = 'https://www.kickstarter.com/discover/categories/art?ref=discover_index';
+var url = 'https://www.kickstarter.com/discover/categories/games?ref=discover_index';
     request(url, function(error, response, html) {
     var $ = cheerio.load(html);
     $('.featured-project__title.ratio-16-9').each(function(i, element){
@@ -201,7 +184,7 @@ var url = 'https://www.kickstarter.com/discover/categories/art?ref=discover_inde
 });
 
 router.get('/scrape-journalism', function(req, res) {
-var url = 'https://www.kickstarter.com/discover/categories/art?ref=discover_index';
+var url = 'https://www.kickstarter.com/discover/categories/journalism?ref=discover_index';
     request(url, function(error, response, html) {
     var $ = cheerio.load(html);
     $('.featured-project__title.ratio-16-9').each(function(i, element){
@@ -219,7 +202,7 @@ var url = 'https://www.kickstarter.com/discover/categories/art?ref=discover_inde
 });
 
 router.get('/scrape-photography', function(req, res) {
-var url = 'https://www.kickstarter.com/discover/categories/art?ref=discover_index';
+var url = 'https://www.kickstarter.com/discover/categories/photography?ref=discover_index';
     request(url, function(error, response, html) {
     var $ = cheerio.load(html);
     $('.featured-project__title.ratio-16-9').each(function(i, element){
@@ -237,7 +220,7 @@ var url = 'https://www.kickstarter.com/discover/categories/art?ref=discover_inde
 });
 
 router.get('/scrape-publishing', function(req, res) {
-var url = 'https://www.kickstarter.com/discover/categories/art?ref=discover_index';
+var url = 'https://www.kickstarter.com/discover/categories/publishing?ref=discover_index';
     request(url, function(error, response, html) {
     var $ = cheerio.load(html);
     $('.featured-project__title.ratio-16-9').each(function(i, element){
@@ -255,7 +238,7 @@ var url = 'https://www.kickstarter.com/discover/categories/art?ref=discover_inde
 });
 
 router.get('/scrape-technology', function(req, res) {
-var url = 'https://www.kickstarter.com/discover/categories/art?ref=discover_index';
+var url = 'https://www.kickstarter.com/discover/categories/technology?ref=discover_index';
     request(url, function(error, response, html) {
     var $ = cheerio.load(html);
     $('.featured-project__title.ratio-16-9').each(function(i, element){
@@ -273,7 +256,7 @@ var url = 'https://www.kickstarter.com/discover/categories/art?ref=discover_inde
 });
 
 router.get('/scrape-theater', function(req, res) {
-var url = 'https://www.kickstarter.com/discover/categories/art?ref=discover_index';
+var url = 'https://www.kickstarter.com/discover/categories/theater?ref=discover_index';
     request(url, function(error, response, html) {
     var $ = cheerio.load(html);
     $('.featured-project__title.ratio-16-9').each(function(i, element){

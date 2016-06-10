@@ -13,83 +13,9 @@ var router = express.Router();
 
 
 
-// //Save to DB
-// app.post('/submit', function(req, res) {
-//   console.log(req.body.title);
-//   var noteSave = req.body;
-//     if (err) {
-//       console.log(err);
-//     } else {
-
-//       var newNote = Note ({
-//         notename: noteSave
-//       });
-//       // save the new title
-//       newNote.save(function(err) {
-//         if (err) throw err;
-//         console.log('Note created!');
-//       });
-
-//       res.send(saved);
-//     }
-  
-// });
-
-// module.exports = router;
-
-// //Get from DB
-// app.get('/all', function(req, res) {
-//   db.notes.find({}, function(err, found) {
-//     if (err) {
-//       console.log(err);
-//     } else {
-//       res.json(found);
-//     }
-//   });
-// });
 
 
-// //Find One in DB
-// app.get('/find/:id', function(req, res){
 
-//     //when searching by an id, the id needs to be passed in as (mongojs.ObjectId(IDYOUWANTTOFIND))
-//     console.log(req.params.id);
-//     db.notes.findOne({
-//         '_id': mongojs.ObjectId(req.params.id)
-//     }, function(err, found){
-//         if (err) {
-//             console.log(err);
-//             res.send(err);
-//         } else {
-//             console.log(found);
-//             res.send(found);
-//         }
-//     });
-// });
-
-
-// //Update One in the DB
-// app.post('/update/:id', function(req, res) {
-//     //when searching by an id, the id needs to be passed in as (mongojs.ObjectId(IDYOUWANTTOFIND))
-
-//   db.notes.update({
-//     '_id': mongojs.ObjectId(req.params.id)
-//   },{
-//     $set: {
-//       'title': req.body.title,
-//       'note': req.body.note,
-//       'modified': Date.now()
-//     }
-//   }, function(err, edited) {
-//     if (err) {
-//       console.log(err);
-//             res.send(err);
-//     } else {
-//       console.log(edited);
-//             res.send(edited);
-//     }
-//   });
-// });
 // Model.remove({ _id: req.body.id }, function(err) {
 //     if (!err) {
 //             message.type = 'notification!';
@@ -98,22 +24,25 @@ var router = express.Router();
 //             message.type = 'error';
 //     }
 // });
-
+// Ministry.findOne({_id:req.params.id}).exec(function(err, ministry){
+//         if(ministry) {
+//            ministry.remove();
+//         }
 // //Delete One from the DB
-router.get('/delete/:id', function(req, res) {
-  Note.remove({
-    "_id": mongojs.ObjectId(req.params.id)
-  }, function(err, removed) {
+router.delete('/delete/:id', function(req, res) {
+  Note.findOne({"_id": req.params.id}).exec(function(err, removed) {
     if (err) {
       console.log(err);
             res.send(err);
-    } else {
+    } else if (removed){
       console.log(removed);
-      res.send(removed);
+      removed.remove();
+      // res.send(removed);
     }
   });
 });
 
+module.exports = router;
 
 // //Clear the DB
 // app.get('/clearall', function(req, res) {
@@ -130,6 +59,3 @@ router.get('/delete/:id', function(req, res) {
 
 
 
-// app.listen(3000, function() {
-//   console.log('App running on port 3000!');
-// });
