@@ -1,6 +1,9 @@
+
+
+
 $.getJSON('/titles', function(data) {
   for (var i = 0; i<data.length; i++){
-    $('#personDataTable').append('<p data-id="' + data[i]._id + '">'+ data[i].title + '<br />'+ 'https://www.kickstarter.com' + data[i].link + '</p>');
+    $('.td-trials').append('<p data-id="' + data[i]._id + '">'+ data[i].title + '<br />'+ 'https://www.kickstarter.com' + data[i].link + '</p>');
   }
 });
 

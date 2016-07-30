@@ -52,7 +52,7 @@ h1 {
   margin-bottom: 35px;
 }
 .row {
-  background-color: #84ddaf;
+  background-color: whitesmoke;
 }
 .col-md-7 {
   background-color: #84ddaf;
@@ -115,5 +115,5 @@ div.jumbotron {
   background: #84ddaf;
 }
 .col-md-4 {
-  background: #84ddaf;
+  background: whitesmoke;
 }
