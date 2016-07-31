@@ -6,7 +6,7 @@ var session = require('express-session');
 var request = require('request');
 var bcrypt = require('bcryptjs');
 var cheerio = require('cheerio');
-var db = require('./config/db');
+// var db = require('./config/db');
 var path = require('path');
 var mongoose = require('mongoose');
 
@@ -34,27 +34,30 @@ app.use('/', notes_controllers);
 app.use('/', titles_controllers);
 
 
+
 // Database configuration with mongoose
-// var databaseUri = 'mongodb://localhost/week18mongoose';
-// var mlabDatabaseUri ='mongodb://test:test217@ds061721.mlab.com:61721/heroku_d103gdp1';
-// if (process.env.MONGODB_URI) {
-//   console.log('THIS IS THE HEROKU MONGODB URI =====> ' + process.env.MONGODB_URI);
-//   mongoose.connect(process.env.MONGODB_URI);
-// } else {
-//   mongoose.connect(databaseUri);
-// }
 
-// var db = mongoose.connection;
+var scrape_db = 'mongodb://localhost/scrape_db';
 
-// // show any mongoose errors
-// db.on('error', function(err) {
-//   console.log('Mongoose Error: ', err);
-// });
+if (process.env.MONGODB_URI) {
+  console.log('THIS IS THE HEROKU MONGODB URI =====> ' + process.env.MONGODB_URI);
+  mongoose.connect(process.env.MONGODB_URI);
+} else {
+  mongoose.connect(scrape_db);
+}
+  
 
-// // once logged in to the db through mongoose, log a success message
-// db.once('open', function() {
-//   console.log('Mongoose connection successful.');
-// });
+var db = mongoose.connection;
+
+db.on('error', function(err) {
+  console.log('Database Error:', err);
+});
+
+db.once('open', function() {
+  // we're connected!
+  console.log('connected to ' + scrape_db);
+});
+
 
 app.listen(3000, function() {
   console.log('App running on port 3000!');
